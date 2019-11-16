@@ -8,12 +8,12 @@ import org.iata.ndc.NdcClient;
 
 abstract class AbstractUnmarshaller<T> {
 
-	@SuppressWarnings("unchecked")
-	public T unmarshal(String resource) throws JAXBException {
-		InputStream inputStream = this.getClass().getResourceAsStream(resource);
-		JAXBContext context = NdcClient.getJaxbContext();
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		return (T) unmarshaller.unmarshal(inputStream);
-	}
+    @SuppressWarnings("unchecked")
+    public T unmarshal(String resource) throws JAXBException {
+        InputStream inputStream = this.getClass().getResourceAsStream(resource);
+        JAXBContext context = NdcClient.getJaxbContext();
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        return (T) unmarshaller.unmarshal(inputStream);
+    }
 
 }

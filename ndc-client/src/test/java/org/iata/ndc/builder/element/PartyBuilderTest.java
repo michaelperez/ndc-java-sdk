@@ -9,27 +9,27 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PartyBuilderTest {
-	private PartyBuilder testedClass;
+    private PartyBuilder testedClass;
 
-	@Before
-	public void setUp() {
-		testedClass = new PartyBuilder();
-	}
+    @Before
+    public void setUp() {
+        testedClass = new PartyBuilder();
+    }
 
-	@Test
-	public void setTravelAgencySender() {
-		MsgPartiesType properties = testedClass.setTravelAgencySender("a", "b", "c").build();
-		TravelAgencySenderType sender = properties.getSender().getTravelAgencySender();
-		assertEquals("a", sender.getName());
-		assertEquals("b", sender.getIATANumber());
-		assertEquals("c", sender.getAgencyID().getValue());
-	}
+    @Test
+    public void setTravelAgencySender() {
+        MsgPartiesType properties = testedClass.setTravelAgencySender("a", "b", "c").build();
+        TravelAgencySenderType sender = properties.getSender().getTravelAgencySender();
+        assertEquals("a", sender.getName());
+        assertEquals("b", sender.getIATANumber());
+        assertEquals("c", sender.getAgencyID().getValue());
+    }
 
-	@Test
-	public void clearResets() {
-		testedClass.setTravelAgencySender("a", "b", "c").clear();
-		MsgPartiesType properties = testedClass.build();
-		assertNull(properties.getSender().getTravelAgencySender());
-	}
+    @Test
+    public void clearResets() {
+        testedClass.setTravelAgencySender("a", "b", "c").clear();
+        MsgPartiesType properties = testedClass.build();
+        assertNull(properties.getSender().getTravelAgencySender());
+    }
 
 }

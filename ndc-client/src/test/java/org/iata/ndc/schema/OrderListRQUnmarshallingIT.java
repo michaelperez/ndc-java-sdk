@@ -16,26 +16,26 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class OrderListRQUnmarshallingIT extends AbstractUnmarshaller<OrderListRQ> {
 
-	@Parameters(name = "{index}: {0}")
-	public static Collection<String[]> sampleFiles() {
-		return Arrays.asList(new String[][] {
-			{"/Athena/OneWay/OrderListRQ_AirlineFilter.xml", "9A"},
-			{"/Athena/RoundTrip/OrderListRQ_AirlineFilter.xml", "9A"},
-			{"/Kronos/OneWay/OrderListRQ_AirlineFilter.xml", "C9"},
-			{"/Kronos/RoundTrip/OrderListRQ_AirlineFilter.xml", "C9"},
+    @Parameters(name = "{index}: {0}")
+    public static Collection<String[]> sampleFiles() {
+        return Arrays.asList(new String[][]{
+                {"/Athena/OneWay/OrderListRQ_AirlineFilter.xml", "9A"},
+                {"/Athena/RoundTrip/OrderListRQ_AirlineFilter.xml", "9A"},
+                {"/Kronos/OneWay/OrderListRQ_AirlineFilter.xml", "C9"},
+                {"/Kronos/RoundTrip/OrderListRQ_AirlineFilter.xml", "C9"},
 
-		});
-	}
+        });
+    }
 
-	@Parameter
-	public String resource;
+    @Parameter
+    public String resource;
 
-	@Parameter(value=1)
-	public String airlineID;
+    @Parameter(value = 1)
+    public String airlineID;
 
-	@Test
-	public void unmarshal() throws JAXBException {
-		OrderListRQ orderListRQ = unmarshal(resource);
-		assertEquals(airlineID, orderListRQ.getQuery().getFilters().getAirline().getAirlineID().value);
-	}
+    @Test
+    public void unmarshal() throws JAXBException {
+        OrderListRQ orderListRQ = unmarshal(resource);
+        assertEquals(airlineID, orderListRQ.getQuery().getFilters().getAirline().getAirlineID().value);
+    }
 }
